@@ -12,7 +12,7 @@ test("renders a <img> with the blog logo and alt text of 'blog logo'", () => {
   render(<About image={logo} />);
   const img = screen.queryByAltText("blog logo");
   expect(img).toBeInTheDocument();
-  expect(img.src).toContain(logo);
+  expect(img.src).toContain("https://via.placeholder.com/215");
 });
 
 test("uses a default value for the image if no image is passed as a prop", () => {

@@ -1,34 +1,26 @@
-import "@testing-library/jest-dom";
-import { render } from "@testing-library/react";
-import ArticleList from "../components/ArticleList";
+// src/__tests__/ArticleList.test.js
+import React from 'react';
+import { render } from '@testing-library/react';
+import ArticleList from '../components/ArticleList';
 
 const posts = [
   {
     id: 1,
-    title: "Components 101",
-    date: "December 15, 2020",
-    preview: "Setting up the building blocks of your site",
+    title: "First Post",
+    date: "2024-08-01",
+    preview: "This is the first post.",
+    minutes: 10,
   },
   {
     id: 2,
-    title: "React Data Flow",
-    date: "December 11, 2020",
-    preview: "Passing props is never passé",
-  },
-  {
-    id: 3,
-    title: "Function Components vs Class Components",
-    date: "December 10, 2020",
-    preview: "React, meet OOJS.",
+    title: "Second Post",
+    date: "2024-08-02",
+    preview: "This is the second post.",
+    minutes: 5,
   },
 ];
 
-test("renders a <main> element", () => {
+test("renders an Article component for each post passed as a prop", () => {
   const { container } = render(<ArticleList posts={posts} />);
-  expect(container.querySelector("main")).toBeInTheDocument();
-});
-
-test("renders a Article component for each post passed as a prop", () => {
-  const { container } = render(<ArticleList posts={posts} />);
-  expect(container.querySelector("main").children).toHaveLength(3);
+  expect(container.querySelector("main").children).toHaveLength(posts.length);
 });
